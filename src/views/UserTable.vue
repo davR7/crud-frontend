@@ -3,17 +3,20 @@
     <div class="table-title d-flex justify-content-between">
         <div class="d-flex justify-content-between">
           <img src="../assets/logo.png" width="50px" alt="logo">
-          <h2>Lista de Contatos</h2>
+          <h3>Lista de Contatos</h3>
         </div>
-        <b-button variant="success"><b-icon icon="person-plus-fill"></b-icon>Adicionar</b-button>
+        <b-button pill variant="success" @click="goAddUser">
+          <b-icon icon="person-plus-fill"></b-icon>Adicionar</b-button>
     </div>
     <div class="table-wrapper">
-      <b-table striped hover :items="items.users" :fields="fields" id="crud-table">
-        <template v-slot:cell(actions)>
-          <b-button size="sm" class="mr-2" variant="primary">
+      <b-table striped :items="items.users" :fields="fields" id="crud-table">
+        <template v-slot:cell(actions)="row">
+          <b-button size="sm" class="mr-2" variant="primary" 
+            @click="goEditUser(row.item)">
             <b-icon icon="pencil"></b-icon>
           </b-button>
-          <b-button size="sm" class="mr-2" variant="danger">
+          <b-button size="sm" class="mr-2" variant="danger" v-b-modal.modalDel
+            @click="captureUser(row.item)">
             <b-icon icon="trash"></b-icon>
           </b-button>
         </template>
@@ -39,7 +42,7 @@
 export default {
   data() {
     return {
-      limit: 5,
+      limit: 8,
       currentPage: 1,
       fields: [
         {
@@ -55,7 +58,7 @@ export default {
           label: "Email",
         },
         {
-          key: "fone",
+          key: "phone",
           label: "Telefone",
         },
         {
@@ -75,16 +78,26 @@ export default {
       this.$store.dispatch("getUsers", {
         page: this.currentPage,
         limit: this.limit,
-      });
+      })
+    },
+    goAddUser(){
+      this.$router.push('/adduser')
+    },
+    captureUser(user){
+      this.$store.commit('updateUser', user)
+    },
+    goEditUser(user){
+      this.captureUser(user)
+      this.$router.push('/edituser')
     },
   },
   mounted() {
     this.$store.dispatch("getUsers", {
       page: this.currentPage,
       limit: this.limit,
-    });
-  },
-};
+    })
+  }
+}
 </script>
 
 <style>
@@ -95,7 +108,7 @@ export default {
   border-radius: 5px 5px 0 0;
 }
 
-.user-table .table-title h2 {
+.user-table .table-title h3 {
   margin: 0;
   padding: 0.5rem 0 0 0.2rem;
   font-size: 1.7rem;

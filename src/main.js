@@ -4,6 +4,8 @@ import store from './store/store.js'
 import router from './router.js'
 import './plugins/axios.js'
 import './plugins/bootstrap-vue.js'
+import 'font-awesome/css/font-awesome.css'
+import './plugins/vue-toasted.js'
 
 Vue.config.productionTip = false
 

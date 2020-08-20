@@ -2,7 +2,9 @@
   <div id="app">
     <h2>Crud com VueJS</h2>
     <b-container>
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </b-container>
     <ModalDel />
   </div>

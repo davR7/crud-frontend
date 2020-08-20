@@ -44,7 +44,7 @@ export default {
             this.$http.put(`/users/${this.user._id}`, this.user).then(() => {
                 this.$store.commit('cleanUser')
                 this.$router.push('/')
-                showSuccess('Edited user!')
+                showSuccess('Edited User!')
             }).catch(showError)
         },
         goHome(){

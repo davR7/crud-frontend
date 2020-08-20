@@ -2,9 +2,7 @@
   <div id="app">
     <h2>Crud com VueJS</h2>
     <b-container>
-      <keep-alive>
-        <router-view />
-      </keep-alive>
+      <router-view />
     </b-container>
     <ModalDel />
   </div>
@@ -22,7 +20,6 @@ export default {
 
 <style>
 #app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   font-family: 'Varela Round', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -91,6 +91,15 @@ export default {
       this.$router.push('/edituser')
     },
   },
+  watch: {
+    currentPage(){
+      localStorage.setItem('page', this.currentPage)
+    }
+  },
+  created(){
+    const newPage = localStorage.getItem('page')
+    newPage ? this.currentPage = newPage : 1
+  },
   mounted() {
     this.$store.dispatch("getUsers", {
       page: this.currentPage,

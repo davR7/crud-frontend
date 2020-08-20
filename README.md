@@ -1,4 +1,8 @@
-# frontend
+# crud-frontend
+
+To use the application it will be necessary to have a rest api, 
+for this access the link:
+https://github.com/davR7/crud-backend
 
 ## Project setup
 ```

@@ -1,7 +1,8 @@
 # crud-frontend
 
-To use the application it will be necessary to have a rest api, 
-for this access the link:
+crud-frontend is an application built with VueJS (single page application), 
+which lists and manages people's contacts. To use the application it will be 
+necessary to have a rest api, for this access the link:
 https://github.com/davR7/crud-backend
 
 ## Project setup
